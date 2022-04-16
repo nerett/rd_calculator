@@ -11,7 +11,8 @@ class RDCalc
 {
 	private:
 
-		std::string src_sequence_;
+		std::string srcseq_;
+		int srcseq_ptr_;
 		int result_;
 
 	private:
