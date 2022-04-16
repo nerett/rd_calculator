@@ -16,8 +16,8 @@ class RDCalc
 
 		int get_grammar();
 		int get_expression();
-		int get_T(); //cringe...
-		int get_P(); //cringe...
+		int get_token();
+		int get_parentheses();
 		int get_number();
 
 	public:
