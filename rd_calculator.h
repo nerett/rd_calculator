@@ -3,8 +3,10 @@
 
 
 #include <string>
+#include <iostream>
 
 
+/*--------------------------CLASS-----------------------------------------*/
 class RDCalc
 {
 	private:
@@ -27,7 +29,7 @@ class RDCalc
 
 		//RDCalc operator= ( RDCalc& some_rdcalc ) = delete;
 
-		explicit RDCalc( std::string some_sequence );
+		explicit RDCalc( const std::string some_sequence );
 		~RDCalc();
 };
 

@@ -1,5 +1,5 @@
 #include "rd_calculator.h"
-//#include <iostream>
+#include <iostream>
 #include <string>
 
 int main()
@@ -8,7 +8,7 @@ int main()
 	std::cin >> math_sequence;
 
 	RDCalc calculator( math_sequence );
-	cout << calculator.calculate() << endl;
+	std::cout << calculator.calculate() << std::endl;
 
 	return 0;
 }
