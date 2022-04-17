@@ -132,7 +132,9 @@ int RDCalc::get_parentheses()
 		srcseq_ptr_++;
 		int value = get_expression();
 
-		if( srcseq_[srcseq_ptr_] == ')' ) //!!!!!!!!!!
+		std::cerr << "[get_parentheses] symbol = " << srcseq_[srcseq_ptr_] << "\n";
+
+		if( srcseq_[srcseq_ptr_] != ')' ) //!!!!!!!!!!
 		{
 			std::cout << "[get_parenthese] Syntax error!\n";
 			std::cout << "[get_parenthese] Finished at symbol №" << srcseq_ptr_ << "\n";
@@ -140,6 +142,18 @@ int RDCalc::get_parentheses()
 
 		srcseq_ptr_++;
 
+/*
+		std::cerr << "[get_parentheses] symbol = " << srcseq_[srcseq_ptr_] << "\n";
+
+		if( srcseq_[srcseq_ptr_] == ')' )
+		{
+			std::cout << "[get_parentheses] Syntax error!\n";
+			std::cout << "[get_parentheses] Finished at symbol №" << srcseq_ptr_ << "\n";
+			return {};
+		}
+*/
+
+		//srcseq_ptr_++;
 		std::cerr << "[get_parentheses] returning " << value << "\n";
 		return value;
 	}
