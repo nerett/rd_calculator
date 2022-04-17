@@ -13,20 +13,20 @@ Use `make rund` instead to run in debug mode.
 ## Building from source
 Download this repository with
 
-```
+```shell
 git clone https://github.com/nerett/rd_calculator.git
 ```
 
 Build it with
 
-```
+```shell
 cd rd_calculator/
 make
 ```
 
 To totally rebuild the project run
 
-```
+```shell
 make clean
 make
 ```
