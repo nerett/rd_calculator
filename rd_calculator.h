@@ -9,8 +9,7 @@
 /*--------------------------CLASS-----------------------------------------*/
 class RDCalc
 {
-	//private:
-	public:
+	private:
 
 		std::string srcseq_;
 		int srcseq_ptr_;

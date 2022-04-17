@@ -7,7 +7,7 @@ RDCalc::RDCalc( const std::string some_sequence ):
 	srcseq_ptr_ ( 0 ),
 	result_ ( 0 )
 {
-	std::cerr << "[RDCalc]\n";
+	std::cerr << "[RDCalc]\n"; //!TODO macro with NDEBUG support
 }
 
 
@@ -22,7 +22,8 @@ RDCalc::~RDCalc()
 int RDCalc::calculate()
 {
 	std::cerr << "[calculate]\n";
-	std::cerr << "Calculating " << srcseq_ << std::endl;
+	std::cerr << "[calculate] calculating " << srcseq_ << std::endl;
+
 	result_ = get_grammar();
 	return get_result();
 }
@@ -32,6 +33,7 @@ int RDCalc::calculate()
 int RDCalc::get_result() //!TODO rename
 {
 	std::cerr << "[get_result]\n";
+
 	return result_;
 }
 
@@ -70,23 +72,16 @@ int RDCalc::get_expression()
 
 		current_value = get_token();
 
-		if( op == '+' )
-		{
-			value += current_value;
-		}
-		else
+		if( op == '-' )
 		{
 			value -= current_value;
+			continue;
 		}
+		value += current_value;
 	}
 
 	std::cerr << "[get_expression] returning " << value << "\n";
 	return value;
-
-	/*
-		else
-			return get_number();
-	*/
 }
 
 
@@ -98,7 +93,7 @@ int RDCalc::get_token()
 	int value = get_parentheses();
 
 	int current_value = 0;
-	while( srcseq_[srcseq_ptr_] == '*' || srcseq_[srcseq_ptr_] == '/' )
+	while( srcseq_[srcseq_ptr_] == '*' || srcseq_[srcseq_ptr_] == '/' ) //!TODO переместить получение значения оператора в конец
 	{
 		std::cerr << "[get_token] while iteration\n";
 
@@ -107,14 +102,12 @@ int RDCalc::get_token()
 
 		current_value = get_parentheses();
 
-		if( op == '*' )
-		{
-			value *= current_value;
-		}
-		else
+		if( op == '/' )
 		{
 			value /= current_value;
+			continue;
 		}
+		value *= current_value;
 	}
 
 	std::cerr << "[get_token] returning " << value << "\n";
@@ -142,26 +135,13 @@ int RDCalc::get_parentheses()
 
 		srcseq_ptr_++;
 
-/*
-		std::cerr << "[get_parentheses] symbol = " << srcseq_[srcseq_ptr_] << "\n";
-
-		if( srcseq_[srcseq_ptr_] == ')' )
-		{
-			std::cout << "[get_parentheses] Syntax error!\n";
-			std::cout << "[get_parentheses] Finished at symbol №" << srcseq_ptr_ << "\n";
-			return {};
-		}
-*/
-
-		//srcseq_ptr_++;
 		std::cerr << "[get_parentheses] returning " << value << "\n";
 		return value;
 	}
 
-	int value = get_number(); //костыль
+	int value = get_number(); //дебаг
 	std::cerr << "[get_parentheses] returning " << value << "\n";
 	return value;
-	//return get_number(); //!!!!!!!!!!!!!!!!!
 }
 
 
@@ -171,11 +151,9 @@ int RDCalc::get_number()
 	std::cerr << "[get_number]\n";
 
 	int value = 0;
-
 	do
 	{
 		std::cerr << "[get_number] do-while iteration\n";
-
 		std::cerr << "[get_number] symbol = " << srcseq_[srcseq_ptr_] << "\n";
 		std::cerr << "[get_number] symbolcode = " << srcseq_[srcseq_ptr_] - '0' << "\n";
 
