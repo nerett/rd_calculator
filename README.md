@@ -20,6 +20,7 @@ git clone https://github.com/nerett/rd_calculator.git
 Build it with
 
 ```
+cd rd_calculator/
 make
 ```
 
