@@ -1,13 +1,14 @@
 # RDCalc
-`RDCalc` is a simple, recursive descent-based cli calculator.
+`RDCalc` is a simple, recursive descent-based CLI calculator. It analyzes mathematical expression using grammars and calculates the result.
 
 ## Usage
-You can run `RDCalc` with
+You can run `RDCalc` with (also see [Building from source](https://github.com/nerett/rd_calculator#building-from-source))
 
 ```shell
-make run
+make run <math expression>$
 ```
 
+Supported symbols: `(`, `)`, `*`, `/`, `+`, `-` and numbers. You have to put `$` in the end of expression.
 Use `make rund` instead to run in debug mode.
 
 ## Building from source
